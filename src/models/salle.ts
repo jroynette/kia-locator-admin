@@ -4,6 +4,7 @@ import {Plan} from "./plan";
 
 export class Salle {
 
+  id: number;
   nom: string;
   capactite?: number;
   retro?: boolean;
@@ -12,6 +13,6 @@ export class Salle {
   positionX?: number;
   positionY?: number;
   photos?: Photo[];
-  reservationsJour?: Reservation[];
+  //reservationsJour?: Reservation[];
   // disponible?: boolean; champ calculé?
 }

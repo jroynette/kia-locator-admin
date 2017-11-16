@@ -3,15 +3,19 @@ export const PLANS: Plan[] = [
   { id: 1, site: 'Lys', batiment: 'Bâtiment 1', etage: 'RDC', url: 'http://www.construiresamaison.com/images/plan-maison-ecologique-vide-rdc-17874.jpg',
     salles: [
       {
+        id: 1,
         nom: 'Pantalon'
       },
       {
+        id: 2,
         nom: 'Robe'
       },
       {
+        id: 3,
         nom: 'T-Shirt'
       },
       {
+        id: 4,
         nom: 'Chaussure'
       }
     ]},

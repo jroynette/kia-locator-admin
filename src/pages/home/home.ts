@@ -24,13 +24,14 @@ export class HomePage {
     this.navCtrl.push(SallePage, { salle: salle})
   }
 
-  presentModal() {
+    presentModal() {
     let modal = this.modalCtrl.create(SallePage);
     modal.present();
   }
 
   getPlans(): void {
-    this.plans = this.planService.getPlans();
+    this.planService.getPlans().subscribe(response => this.plans = response);
+    console.log('plans: ',this.plans);
   }
 
   getSitesList(): string[] {
