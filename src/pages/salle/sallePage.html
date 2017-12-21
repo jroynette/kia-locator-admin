@@ -16,27 +16,23 @@
 
   <ion-item>
     <ion-label fixed>Site</ion-label>
-    <ion-input type="text" [(ngModel)]="salle.site"></ion-input>
+    <ion-input type="text" [(ngModel)]="salle.plan.site"></ion-input>
   </ion-item>
-
-
 
   <ion-item>
     <ion-label fixed>Bâtiment</ion-label>
-    <ion-input type="text" [(ngModel)]="salle.batiment"></ion-input>
+    <ion-input type="text" [(ngModel)]="salle.plan.batiment"></ion-input>
   </ion-item>
 
    <ion-item>
     <ion-label fixed>Niveau</ion-label>
-    <ion-input type="text" [(ngModel)]="salle.niveau"></ion-input>
+    <ion-input type="text" [(ngModel)]="salle.plan.etage"></ion-input>
   </ion-item>
 
   <ion-item>
     <ion-label fixed>Capacite</ion-label>
     <ion-input type="number" [(ngModel)]="salle.capacite"></ion-input>
   </ion-item>
-
-  <!--Vieille bordure verte Android => main.css:12587-->
 
 </ion-list>
 </ion-content>

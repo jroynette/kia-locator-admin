@@ -9,9 +9,11 @@ import { Salle } from '../../models/salle';
 })
 export class SallePage {
 
-    salle:Salle = new Salle();
+    salle: Salle = new Salle();
 
     constructor(private navParams: NavParams) {
-     // this.salle = navParams.get('salle');
+      if (navParams.get('salle') != null) {
+        this.salle = navParams.get('salle');
+      }
   }
 }

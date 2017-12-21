@@ -20,13 +20,13 @@ export class HomePage {
     this.getPlans();
   }
 
-  itemSelected(salle:Salle){
-    this.navCtrl.push(SallePage, { salle: salle})
-  }
-
-    presentModal() {
+  presentCreationModal() {
     let modal = this.modalCtrl.create(SallePage);
     modal.present();
+  }
+
+  presentEditionModal(salle: Salle) {
+    this.navCtrl.push(SallePage, {salle: salle});//Promise à gérer
   }
 
   getPlans(): void {
@@ -67,5 +67,18 @@ export class HomePage {
     else {
       return etageToReturn.url;
     }
+  }
+
+  getPlanSalles(site: string, batiment: string, etage: string): Array<Salle> {
+    let sallesList: Array<Salle> = [];
+
+    const etageToReturn: Plan = this.plans.find(plan => plan.site === site
+    && plan.batiment === batiment
+    && plan.etage === etage);
+    if (etageToReturn != null && etageToReturn.salles != null) {
+      sallesList = etageToReturn.salles;
+    }
+
+    return sallesList;
   }
 }
