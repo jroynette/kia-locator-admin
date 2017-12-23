@@ -1,5 +1,4 @@
 import {Photo} from "./photo";
-import {Reservation} from "./reservation";
 import {Plan} from "./plan";
 
 export class Salle {

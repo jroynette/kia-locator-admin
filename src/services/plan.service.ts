@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import {Observable} from 'rxjs/Rx';
-import {Http, Headers, Response} from '@angular/http';
+import 'rxjs/add/operator/map'
+import {Http, Response} from '@angular/http';
 import {Plan} from "../models/plan";
 
 

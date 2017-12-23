@@ -42,7 +42,7 @@ export class HomePage {
   }
 
   getBatimentsList(site: string): string[] {
-    let batimentsToReturn: Plan[] = this.plans.filter(plan => plan.site === site);
+    let batimentsToReturn: Plan[] = _.filter(this.plans,function(plan){plan.site === site});
     batimentsToReturn = _.uniqBy(batimentsToReturn, 'batiment');
     return batimentsToReturn.map(function(plan) {
       return plan.batiment;
@@ -50,17 +50,17 @@ export class HomePage {
   }
 
   getEtagesList(site: string, batiment: string): string[] {
-    let batimentsToReturn: Plan[] = this.plans.filter(plan => plan.site === site
-                                                      && plan.batiment === batiment);
+    let batimentsToReturn: Plan[] = _.filter(this.plans,function(plan){plan.site === site
+      && plan.batiment === batiment});
     return batimentsToReturn.map(function(plan) {
       return plan.etage;
     });
   }
 
   getPlanUrl(site: string, batiment: string, etage: string): string {
-    const etageToReturn: Plan = this.plans.find(plan => plan.site === site
+    const etageToReturn: Plan = _.find(this.plans,function(plan){ plan.site === site
                                                         && plan.batiment === batiment
-                                                        && plan.etage === etage);
+                                                        && plan.etage === etage});
     if (etageToReturn == null) {
       return '';
     }

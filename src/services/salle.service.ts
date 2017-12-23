@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
 import {Salle} from "../models/salle";
-import {Http, Headers, Response} from '@angular/http';
+import {Http, Response} from '@angular/http';
 import {Observable} from 'rxjs/Rx';
+import 'rxjs/add/operator/map'
 
 
 
