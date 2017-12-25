@@ -1,7 +1,7 @@
 <ion-header>
   <ion-navbar>
     <ion-title>
-      {{ salle.nom }}
+      Salle:
     </ion-title>
   </ion-navbar>
 </ion-header>
@@ -11,24 +11,22 @@
 
   <ion-item>
     <ion-label fixed>Nom</ion-label>
-    <ion-input type="text" [disabled]="true" [(ngModel)]="salle.nom"></ion-input>
+    <ion-input type="text" [(ngModel)]="salle.nom"></ion-input>
   </ion-item>
 
-  <ion-item>
-    <ion-label fixed>Site</ion-label>
-    <ion-input type="text" [(ngModel)]="salle.site"></ion-input>
+   <ion-item> 
+  <ion-label fixed>Site</ion-label>
+    <ion-input type="text" [(ngModel)]="salle.plan.site"></ion-input> 
   </ion-item>
-
-
 
   <ion-item>
     <ion-label fixed>Bâtiment</ion-label>
-    <ion-input type="text" [(ngModel)]="salle.batiment"></ion-input>
+    <ion-input type="text" [(ngModel)]="salle.plan.batiment"></ion-input> 
   </ion-item>
 
    <ion-item>
     <ion-label fixed>Niveau</ion-label>
-    <ion-input type="text" [(ngModel)]="salle.niveau"></ion-input>
+    <ion-input type="text" [(ngModel)]="salle.plan.etage"></ion-input> 
   </ion-item>
 
   <ion-item>
@@ -36,7 +34,6 @@
     <ion-input type="number" [(ngModel)]="salle.capacite"></ion-input>
   </ion-item>
 
-  <!--Vieille bordure verte Android => main.css:12587-->
-
 </ion-list>
+<button ion-button full>Enregistrer salle</button>
 </ion-content>

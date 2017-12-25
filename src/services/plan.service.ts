@@ -8,13 +8,13 @@ import {Plan} from "../models/plan";
 @Injectable()
 export class PlanService {
 
+  url = 'https://kia-locator-ws.herokuapp.com/plans';
+
   constructor(private http: Http) {
   }
 
   getPlans(): Observable<Plan[]> {
-
-    const url = 'https://kia-locator-ws.herokuapp.com/plans';
-    return this.http.get(url).map((result: Response) => result.json());
+    return this.http.get(this.url).map((result: Response) => result.json());
   }
 
 }

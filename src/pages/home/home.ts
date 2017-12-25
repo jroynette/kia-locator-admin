@@ -24,14 +24,17 @@ export class HomePage {
     this.navCtrl.push(SallePage, { salle: salle})
   }
 
-    presentModal() {
+  presentCreationModal() { 
     let modal = this.modalCtrl.create(SallePage);
     modal.present();
   }
 
+  presentEditionModal(salle: Salle) { 
+    this.navCtrl.push(SallePage, {salle: salle});//Promise � g�
+  } 
+ 
   getPlans(): void {
     this.planService.getPlans().subscribe(response => this.plans = response);
-    console.log('plans: ',this.plans);
   }
 
   getSitesList(): string[] {
@@ -42,7 +45,7 @@ export class HomePage {
   }
 
   getBatimentsList(site: string): string[] {
-    let batimentsToReturn: Plan[] = _.filter(this.plans,function(plan){plan.site === site});
+    let batimentsToReturn: Plan[] = _.filter(this.plans,{ 'site': site});
     batimentsToReturn = _.uniqBy(batimentsToReturn, 'batiment');
     return batimentsToReturn.map(function(plan) {
       return plan.batiment;
@@ -50,17 +53,16 @@ export class HomePage {
   }
 
   getEtagesList(site: string, batiment: string): string[] {
-    let batimentsToReturn: Plan[] = _.filter(this.plans,function(plan){plan.site === site
-      && plan.batiment === batiment});
+    let batimentsToReturn: Plan[] = _.filter(this.plans,{ 'site': site,'batiment':batiment});
     return batimentsToReturn.map(function(plan) {
       return plan.etage;
     });
   }
 
   getPlanUrl(site: string, batiment: string, etage: string): string {
-    const etageToReturn: Plan = _.find(this.plans,function(plan){ plan.site === site
-                                                        && plan.batiment === batiment
-                                                        && plan.etage === etage});
+    const etageToReturn: Plan = _.find(this.plans,{ 'site':site,
+                                                        'batiment': batiment,
+                                                        'etage': etage});
     if (etageToReturn == null) {
       return '';
     }
@@ -68,4 +70,16 @@ export class HomePage {
       return etageToReturn.url;
     }
   }
+  getPlanSalles(site: string, batiment: string, etage: string): Array<Salle> { 
+    let sallesList: Array<Salle> = []; 
+ 
+    const etageToReturn: Plan = _.find(this.plans,{ 'site':site,
+    'batiment': batiment,
+    'etage': etage}); 
+    if (etageToReturn != null && etageToReturn.salles != null) { 
+      sallesList = etageToReturn.salles; 
+    } 
+ 
+    return sallesList; 
+  } 
 }

@@ -8,27 +8,23 @@ import 'rxjs/add/operator/map'
 
 @Injectable()
 export class SalleService {
+  
+  url = 'https://kia-locator-ws.herokuapp.com';
 
   constructor(private http: Http) {
   }
 
   ajouterSalle(salle:Salle): Observable<Salle> {
 
-    const url = 'https://kia-locator-ws.herokuapp.com';
-
-    return this.http.post(url + '/salles', salle)
+    return this.http.post(this.url + '/salles', salle)
       .map((result: Response) => result.json());
   }
 
   modifierSalle(salle:Salle): void {
-
-    const url = 'https://kia-locator-ws.herokuapp.com';
-    this.http.put(url + '/salles/' + salle.id, salle);
+    this.http.put(this.url + '/salles/' + salle.id, salle);
   }
 
   supprimerSalle(id:number): void {
-
-    const url = 'https://kia-locator-ws.herokuapp.com';
-    this.http.delete(url + '/salles/' + id);
+    this.http.delete(this.url + '/salles/' + id);
   }
 }

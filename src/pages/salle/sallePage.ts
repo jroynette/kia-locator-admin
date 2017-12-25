@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { NavParams } from 'ionic-angular';
 
+import { Plan } from './../../models/plan'
 import { Salle } from '../../models/salle';
 
 @Component({
@@ -9,9 +10,14 @@ import { Salle } from '../../models/salle';
 })
 export class SallePage {
 
-    salle:Salle = new Salle();
+  salle: Salle = new Salle(); 
+
 
     constructor(private navParams: NavParams) {
-     // this.salle = navParams.get('salle');
-  }
+      if (navParams.get('salle') != null) { 
+        this.salle = navParams.get('salle'); 
+      }  else{
+        this.salle.plan = new Plan();
+      }
+    }
 }

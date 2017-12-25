@@ -26,7 +26,6 @@
         </ion-list>
       </ion-col>
 
-
       <ion-col col-4>
         <ion-list>
           <ion-item>
@@ -36,7 +35,6 @@
             </ion-select>
           </ion-item>
         </ion-list>
-
       </ion-col>
       <ion-col col-4>
         <ion-list>
@@ -58,43 +56,16 @@
       </ion-col>
       <ion-col col-4>
         <ion-list>
-          <ion-item>
-            <img src="/assets/icon/localization-icon-blue-128.png" alt="Localization done" height="32" style="vertical-align: middle; margin-right: 8px;"/>
-            <span>Pantalon</span>
+         
+          <ion-item *ngFor="let salle of getPlanSalles(site, batiment, etage)"> 
+            <img src="{{salle.positionX == null || salle.positionY == null ? '/assets/icon/localization-icon-white-128.png' : '/assets/icon/localization-icon-blue-128.png'}}" 
+                 alt="Localization done" height="32" style="vertical-align: middle; margin-right: 8px;"/> 
+            <span>{{salle.nom}}</span> 
             <button ion-button outline icon-only style="float: right; margin-left: 8px;">
               <ion-icon name="trash"></ion-icon>
             </button>
-            <button ion-button outline icon-only style="float: right">
-              <ion-icon name="create"></ion-icon>
-            </button>
-          </ion-item>
-          <ion-item>
-            <img src="/assets/icon/localization-icon-blue-128.png" alt="Localization done" height="32" style="vertical-align: middle; margin-right: 8px;"/>
-            <span>Robe</span>
-            <button ion-button outline icon-only style="float: right; margin-left: 8px;">
-              <ion-icon name="trash"></ion-icon>
-            </button>
-            <button ion-button outline icon-only style="float: right">
-              <ion-icon name="create"></ion-icon>
-            </button>
-          </ion-item>
-          <ion-item>
-            <img src="/assets/icon/localization-icon-white-128.png" alt="Localization done" height="32" style="vertical-align: middle; margin-right: 8px;"/>
-            <span>Veste</span>
-            <button ion-button outline icon-only style="float: right; margin-left: 8px;">
-              <ion-icon name="trash"></ion-icon>
-            </button>
-            <button ion-button outline icon-only style="float: right">
-              <ion-icon name="create"></ion-icon>
-            </button>
-          </ion-item>
-          <ion-item>
-            <img src="/assets/icon/localization-icon-blue-128.png" alt="Localization done" height="32" style="vertical-align: middle; margin-right: 8px;"/>
-            <span>Chaussure</span>
-            <button ion-button outline icon-only style="float: right; margin-left: 8px;">
-              <ion-icon name="trash"></ion-icon>
-            </button>
-            <button ion-button outline icon-only style="float: right">
+            <button ion-button outline icon-only style="float: right" 
+            (click)="presentEditionModal(salle)"> 
               <ion-icon name="create"></ion-icon>
             </button>
           </ion-item>
@@ -110,20 +81,11 @@
         </button>
       </ion-col>
       <ion-col col-4>
-        <button ion-button icon-left  (click)="presentModal()">
+        <button ion-button icon-left  (click)="presentCreationModal()"> 
           <ion-icon name="add-circle"></ion-icon>
           Ajouter une salle
         </button>
       </ion-col>
     </ion-row>
   </ion-grid>
-
-
-
-
-
-
 </ion-content>
-
-
-
